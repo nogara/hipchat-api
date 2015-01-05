@@ -143,9 +143,9 @@ module HipChat
     # @param timezone [String, 'UTC'] User's timezone. Must be a PHP supported timezone. (default: UTC)
     #
     # @see https://www.hipchat.com/docs/api/method/users/create
-    def users_create(email, name, title, is_group_admin = 0, password = nil, timezone = 'UTC')
+    def users_create(email, name, title, is_group_admin = 0, password = nil, timezone = 'UTC', mention_name = nil)
       self.class.post(hipchat_api_url_for('users/create'), :body => {:auth_token => @token, :email => email, :name => name, :title => title,
-        :is_group_admin => is_group_admin, :password => password, :timezone => timezone}.reject{|key, value| value.nil?})
+        :is_group_admin => is_group_admin, :password => password, :timezone => timezone, :mention_name => mention_name}.reject{|key, value| value.nil?})
     end
 
     # Delete a user.
